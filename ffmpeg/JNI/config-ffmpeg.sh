@@ -292,9 +292,6 @@ FF_FEATURE_CLASS="\
 --enable-libmp3lame \
 "
 FF_FEATURE_DEMUXER="\
---disable-demuxer=ac3 \
---disable-demuxer=dts \
---disable-demuxer=eac3 \
 --disable-demuxer=jacosub \
 --disable-demuxer=microdvd \
 --disable-demuxer=mlp \
@@ -306,7 +303,6 @@ FF_FEATURE_DEMUXER="\
 --disable-demuxer=stl \
 --disable-demuxer=subviewer \
 --disable-demuxer=subviewer1 \
---disable-demuxer=truehd \
 --disable-demuxer=vplayer \
 --disable-demuxer=webvtt \
 "
@@ -381,7 +377,6 @@ FF_FEATURES+=$FF_FEATURE_ENCODER
 FF_OUTDEP="\
 --enable-libmodplug \
 --enable-libopus \
---enable-libspeex \
 --enable-openssl \
 --enable-zlib \
 --enable-libxml2 \
@@ -408,7 +403,7 @@ $EXTRA_PARAMETERS \
 EXTRA_CFLAGS+=" -I$INC_LIBMP3LAME -I$INC_ICONV -I$INC_MXV -I$INC_MXD -I$INC_USB -I$INC_OPENSSL -I$INC_OPUS -I$INC_SPEEX -I$INC_MODPLUG -I$INC_LIBMXL2 -I$INC_LIBSMB2 -I$INC_LIBDAV1D -DNDEBUG -DMXTECHS -DFF_API_AVPICTURE=1 -DCONFIG_MXV_FROM_MXVP=1 -DMXD_BUILTIN -ftree-vectorize -ffunction-sections -funwind-tables -fomit-frame-pointer -no-canonical-prefixes -pipe"
 EXTRA_LIBS=" -L$LIB_MX -lmxutil -lm -lc++_shared"
 
-./configure ${FFCOMPILER}                    \
+bash ./configure ${FFCOMPILER}                    \
             ${FFCOMMON}                      \
             ${FF_FEATURES}                   \
             ${FFMPEG_CONFIGURATION}          \

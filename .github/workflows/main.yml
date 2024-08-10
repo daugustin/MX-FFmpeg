@@ -1,0 +1,50 @@
+name: Build MXCodec
+on:
+  workflow_dispatch:
+    inputs:
+      libver:
+        type: string
+        description: Library Version
+        required: true
+      revision:
+        type: string
+        description: Revision
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup NDK
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r20b
+      - name: Build
+        run: |
+          sudo apt update
+          sudo apt -y install build-essential openjdk-17-jdk-headless
+          cd ffmpeg/JNI
+          ./rebuild-ffmpeg.sh
+          mv libs/armeabi-v7a/neon/libffmpeg.mx.so libffmpeg.mx.so.neon.$LIBVER;
+          mv libs/arm64-v8a/libffmpeg.mx.so libffmpeg.mx.so.neon64.$LIBVER;
+          mv libs/x86_64/libffmpeg.mx.so libffmpeg.mx.so.x86_64.$LIBVER;
+          mv libs/x86/libffmpeg.mx.so libffmpeg.mx.so.x86.$LIBVER;
+          zip -9 mx_neon.zip libffmpeg.mx.so.neon.$LIBVER
+          zip -9 mx_neon64.zip libffmpeg.mx.so.neon64.$LIBVER
+          zip -9 mx_x86_64.zip libffmpeg.mx.so.x86_64.$LIBVER
+          zip -9 mx_x86.zip libffmpeg.mx.so.x86.$LIBVER
+          zip -9 mx_aio.zip libffmpeg.mx.so.neon.$LIBVER libffmpeg.mx.so.neon64.$LIBVER libffmpeg.mx.so.x86_64.$LIBVER libffmpeg.mx.so.x86.$LIBVER
+        env:
+          LIBVER: ${{ github.event.inputs.libver }}
+          NDK: ${{ steps.setup-ndk.outputs.ndk-path }}
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "ffmpeg/JNI/*.zip"
+          body: Release ${{ github.event.inputs.libver }}-${{ github.event.inputs.revision }}
+          tag: ${{ github.event.inputs.libver }}-${{ github.event.inputs.revision }}
+          commit: main
