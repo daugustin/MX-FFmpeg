@@ -80,3 +80,4 @@ dkms.conf
 # Compiled Static libraries
 *.lai
 !/ffmpeg/JNI/libsmb2/.gitignore
+!/ffmpeg/JNI/speex-1.2rc1/include/speex/speex_config_types.h
