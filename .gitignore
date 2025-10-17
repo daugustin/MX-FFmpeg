@@ -79,3 +79,4 @@ dkms.conf
 
 # Compiled Static libraries
 *.lai
+!/ffmpeg/JNI/libsmb2/.gitignore
