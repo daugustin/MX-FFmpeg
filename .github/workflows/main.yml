@@ -26,7 +26,7 @@ jobs:
       - name: Build
         run: |
           sudo apt update
-          sudo apt -y install build-essential openjdk-17-jdk-headless
+          sudo apt -y install build-essential meson openjdk-17-jdk-headless
           cd ffmpeg/JNI
           ./rebuild-ffmpeg.sh
           mv libs/armeabi-v7a/neon/libffmpeg.mx.so libffmpeg.mx.so.neon.$LIBVER;
