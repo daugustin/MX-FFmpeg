@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 ROOT=$(cd "$(dirname "$0")"; pwd)
 source ${ROOT}/util.sh
 
