@@ -60,7 +60,8 @@ export CPPFLAGS="-DMXTECHS"
 export LDFLAGS="-Wl,-z,max-page-size=16384"
 
 ./bootstrap
-./configure --enable-static=no      \
+./configure --enable-static=yes     \
+            --enable-shared=no      \
             --disable-werror        \
             --host=$HOST            \
             --without-libkrb5       \
@@ -83,4 +84,4 @@ if ! test -d  ${DST_DIR}
 then
     mkdir -p ${ROOT}/${DST_DIR}
 fi
-cp lib/.libs/libsmb2.so ${ROOT}/${DST_DIR}
+cp lib/.libs/libsmb2.a ${ROOT}/${DST_DIR}
