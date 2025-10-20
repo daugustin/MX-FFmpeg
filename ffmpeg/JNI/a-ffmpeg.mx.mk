@@ -56,9 +56,7 @@ LOCAL_CFLAGS :=
 LOCAL_LDLIBS := \
 -Wl,--version-script=$(MY_DIR)/version_scripts/ffmpeg \
 -L$(NDK_APP_DST_DIR) \
--lsmb2 \
 -lmxutil \
--lmp3lame \
 -lz \
 $(LIBS_EXTRA)
 

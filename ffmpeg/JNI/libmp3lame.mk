@@ -35,7 +35,7 @@ ${LAME_ROOT}/VbrTag.c \
 ${LAME_ROOT}/version.c
 
 #LOCAL_LDLIBS :=
-LOCAL_LDFLAGS := -Wl,--version-script=$(LOCAL_PATH)/version_scripts/lame
+#LOCAL_LDFLAGS := -Wl,--version-script=$(LOCAL_PATH)/version_scripts/lame
 
 
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)

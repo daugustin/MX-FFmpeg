@@ -44,7 +44,7 @@ else
     die "Unsupported architecture."
 fi
 
-/bin/rm -f ../obj/local/${TARGET_ABI}/libmp3lame.so
+/bin/rm -f ../obj/local/${TARGET_ABI}/libmp3lame.a
 
 ${NDK}/ndk-build NDK_DEBUG=0 \
 				  -e APP_ABI=$TARGET_ABI \
@@ -53,5 +53,5 @@ ${NDK}/ndk-build NDK_DEBUG=0 \
 				  -e NDK_APP_DST_DIR=lame-build
 
 mkdir -p ./libs/${TARGET_PATH}/
-cp -f ../obj/local/${TARGET_ABI}/libmp3lame.so ./libs/${TARGET_PATH}/
-cp -f ../obj/local/${TARGET_ABI}/libmp3lame.so ./lame-3.100/
+cp -f ../obj/local/${TARGET_ABI}/libmp3lame.a ./libs/${TARGET_PATH}/
+cp -f ../obj/local/${TARGET_ABI}/libmp3lame.a ./lame-3.100/

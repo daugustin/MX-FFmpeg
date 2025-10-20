@@ -389,11 +389,11 @@ include $(BUILD_STATIC_LIBRARY)
 
 
 # libmp3lame
-# LOCAL_PATH := $(MY_DIR)/lame-3.100
-# include $(CLEAR_VARS)
-# LOCAL_MODULE    := mp3lame
-# LOCAL_SRC_FILES := libmp3lame.a
-# include $(PREBUILT_STATIC_LIBRARY)
+include $(CLEAR_VARS)
+LOCAL_PATH  := $(NDK_APP_DST_DIR)
+LOCAL_MODULE    := mp3lame
+LOCAL_SRC_FILES := libmp3lame.a
+include $(PREBUILT_STATIC_LIBRARY)
 
 
 #
@@ -434,11 +434,11 @@ LOCAL_LDFLAGS := -Wl,--version-script=$(MY_DIR)/version_scripts/mxutil \
 include $(MY_DIR)/a-arch-$(TARGET_ARCH).mk
 LOCAL_ASFLAGS := $(LOCAL_CFLAGS)
 ifeq ($(TARGET_ARCH),arm)
-LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2
+LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2 mp3lame
 else ifeq ($(TARGET_ARCH),arm64)
-LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2
+LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2 mp3lame
 else
-LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2
+LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2 mp3lame
 endif
 include $(BUILD_SHARED_LIBRARY)
 

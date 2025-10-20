@@ -426,7 +426,7 @@ $EXTRA_PARAMETERS \
 "
 
 EXTRA_CFLAGS+=" -I$INC_LIBMP3LAME -I$INC_ICONV -I$INC_MXV -I$INC_MXD -I$INC_USB -I$INC_DOWNLOAD -idirafter$INC_ZVBI -I$INC_OPENSSL -I$INC_OPUS -I$INC_SPEEX -I$INC_MODPLUG -I$INC_LIBMXL2 -I$INC_LIBSMB2 -I$INC_LIBDAV1D -I$INC_LIBDAV1D_BUILD -DNDEBUG -DMXTECHS $MX_WHITELIST -DFF_API_AVPICTURE=1 -DCONFIG_MXV_FROM_MXVP=1 -DMXD_BUILTIN -ftree-vectorize -ffunction-sections -funwind-tables -fomit-frame-pointer -no-canonical-prefixes -pipe"
-EXTRA_LIBS=" -L$LIB_MX -lsmb2 -lmxutil -lmp3lame -lm -lc++_shared"
+EXTRA_LIBS=" -L$LIB_MX -lmxutil -lm -lc++_shared"
 #EXTRA_LIBS="-L$LIB_MX -L$ANDROID_SDKS_LIBRARY_PATH/$LINK_AGAINST -lmxutil -lm"
 
 if true 
