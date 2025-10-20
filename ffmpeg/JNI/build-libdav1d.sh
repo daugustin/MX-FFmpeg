@@ -113,6 +113,10 @@ then
     CFLAGS+=" -fpic"
     CFLAGS+=" -w"
 
+    LDFLAGS="-O2"
+    LDFLAGS+=" -fpic"
+    LDFLAGS+=" -w"
+
     BUILDDIR=builddir/x86
 
 elif [ ${FLAVOR} == 'x86_64' ] 
@@ -139,6 +143,10 @@ then
     CFLAGS+=" -O2"
     CFLAGS+=" -fpic"
     CFLAGS+=" -w"
+
+    LDFLAGS="-O2"
+    LDFLAGS+=" -fpic"
+    LDFLAGS+=" -w"
 
     BUILDDIR=builddir/x86_64
 else
@@ -189,5 +197,12 @@ then
 fi
 
 meson --default-library static --cross-file=cross_file.txt ${BUILDDIR}
+if test "$?" != 0; then
+    die "ERROR: meson configuration failed for libdav1d.${FLAVOR}"
+fi
+
 cd ${BUILDDIR}
 ninja -j 4
+if test "$?" != 0; then
+    die "ERROR: ninja build failed for libdav1d.${FLAVOR}"
+fi
