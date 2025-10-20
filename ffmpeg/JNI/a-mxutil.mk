@@ -157,7 +157,7 @@ src/opus_decoder.c \
 src/opus_multistream.c \
 src/opus_multistream_decoder.c
 
-LOCAL_CFLAGS := -I$(LOCAL_PATH)/include -I$(LOCAL_PATH)/celt -I$(LOCAL_PATH)/silk -I$(LOCAL_PATH)/silk/fixed -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA -DHAVE_LRINT -DHAVE_LRINTF -O3 -fno-math-errno
+LOCAL_CFLAGS := -I$(LOCAL_PATH)/include -I$(LOCAL_PATH)/celt -I$(LOCAL_PATH)/silk -I$(LOCAL_PATH)/silk/fixed -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA -DHAVE_LRINT -DHAVE_LRINTF -O3 -fno-math-errno -w
 
 include $(MY_DIR)/a-arch-$(TARGET_ARCH).mk
 
@@ -172,7 +172,7 @@ LOCAL_PATH := $(MY_DIR)/speex-1.2rc1
 
 include $(CLEAR_VARS)
 
-LOCAL_CFLAGS = -DFIXED_POINT -DUSE_KISS_FFT -DEXPORT="" -UHAVE_CONFIG_H
+LOCAL_CFLAGS = -DFIXED_POINT -DUSE_KISS_FFT -DEXPORT="" -UHAVE_CONFIG_H -w
 
 # Clang only.
 ifneq ($(findstring clang, $(NDK_TOOLCHAIN_VERSION)),)
@@ -286,7 +286,8 @@ LOCAL_CFLAGS := \
 -DMODPLUG_BUILD=1 \
 -DHAVE_SETENV \
 -DHAVE_SINF \
--Wno-unused-but-set-variable
+-Wno-unused-but-set-variable \
+-w
 
 #TODO:
 #It may be a risk to diable follwing flags roughly.
@@ -383,7 +384,8 @@ LOCAL_CFLAGS := -DLIBXML_THREAD_ENABLED=1         \
                 -Wno-missing-field-initializers   \
                 -Wno-self-assign                  \
                 -Wno-sign-compare                 \
-                -Wno-tautological-pointer-compare
+                -Wno-tautological-pointer-compare \
+                -w
 LOCAL_MODULE := xml2
 include $(BUILD_STATIC_LIBRARY)
 
@@ -421,7 +423,8 @@ sort.c
 LOCAL_CFLAGS := \
 -D_LARGEFILE_SOURCE \
 -DPIC \
--DFF_API_AVPICTURE=1
+-DFF_API_AVPICTURE=1 \
+-w
 
 LOCAL_LDLIBS :=
 LOCAL_LDFLAGS := -Wl,--version-script=$(MY_DIR)/version_scripts/mxutil \

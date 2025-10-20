@@ -51,7 +51,7 @@ LIBS := $(MY_DIR)/libs
 
 
 LOCAL_SRC_FILES := ../ffmpeg.refs.c
-LOCAL_CFLAGS := 
+LOCAL_CFLAGS := -w
 
 LOCAL_LDLIBS := \
 -Wl,--version-script=$(MY_DIR)/version_scripts/ffmpeg \

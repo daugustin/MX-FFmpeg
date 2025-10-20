@@ -52,12 +52,12 @@ if [ ! -e ${CROSS_PREFIX}ar ]; then
   fi
 
 export SYSROOT=$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/sysroot
-export CC="$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/bin/clang -target $CLANG_TARGET"
-export CXX="$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/bin/clang++ -target $CLANG_TARGET"
+export CC="$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/bin/clang -target $CLANG_TARGET -w"
+export CXX="$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/bin/clang++ -target $CLANG_TARGET -w"
 export RANLIB=${CROSS_PREFIX}ranlib
 export AR=${CROSS_PREFIX}ar
-export CPPFLAGS="-DMXTECHS"
-export LDFLAGS="-Wl,-z,max-page-size=16384"
+export CPPFLAGS="-DMXTECHS -w"
+export LDFLAGS="-Wl,-z,max-page-size=16384 -w"
 
 ./bootstrap
 ./configure --enable-static=yes     \

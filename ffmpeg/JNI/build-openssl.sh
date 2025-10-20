@@ -52,8 +52,8 @@ if [ ! -e ${CROSS_PREFIX}ar ]; then
   fi
 
 export ANDROID_SYSROOT=$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/sysroot
-export CC="$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/bin/clang -target $CLANG_TARGET"
-export CXX="$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/bin/clang++ -target $CLANG_TARGET"
+export CC="$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/bin/clang -target $CLANG_TARGET -w"
+export CXX="$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/bin/clang++ -target $CLANG_TARGET -w"
 export RANLIB=${CROSS_PREFIX}ranlib
 export AR=${CROSS_PREFIX}ar
 
