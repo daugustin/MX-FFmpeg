@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := mp3lame
 
-LOCAL_CFLAGS += -Dieee754_float32_t=float -DSTDC_HEADERS
+LOCAL_CFLAGS += -Dieee754_float32_t=float -DSTDC_HEADERS -w
 
 LOCAL_C_INCLUDES := \
 $(LAME_ROOT) \

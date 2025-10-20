@@ -201,6 +201,8 @@ then
       OPTFLAGS="-O2"
   fi
 
+	# Suppress all warnings
+	EXTRA_CFLAGS+=" -w"
 	LINK_AGAINST=22-arm
 elif [ $ARCH == 'arm' ] 
 then
@@ -217,6 +219,8 @@ then
 		CLANG_TARGET=armv7a-none-linux-androideabi21
 	fi
 
+	# Suppress all warnings
+	EXTRA_CFLAGS+=" -w"
 	OPTFLAGS="-O2"
 	#LINK_AGAINST=16-arm
 elif [ $ARCH == 'x86_64' ] 
@@ -234,6 +238,8 @@ then
 		EXTRA_CFLAGS+=" -fstack-protector-strong "
 	fi
 
+	# Suppress all warnings
+	EXTRA_CFLAGS+=" -w"
 	OPTFLAGS="-O2 -fpic"
 	LINK_AGAINST=21-x86_64
 elif [ $ARCH == 'x86' ] 
@@ -252,6 +258,8 @@ then
 		EXTRA_CFLAGS+=" -fstack-protector-strong "
 	fi
 
+	# Suppress all warnings
+	EXTRA_CFLAGS+=" -w"
 	OPTFLAGS="-O2 -fpic"
 	LINK_AGAINST=16-x86
 #elif [ $ARCH == 'mips' ] 

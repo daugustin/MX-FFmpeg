@@ -56,10 +56,12 @@ then
     fi
     CFLAGS+=" -fstack-protector"
     CFLAGS+=" -fstrict-aliasing"
+    CFLAGS+=" -w"
 
     LDFLAGS="-Wl,--fix-cortex-a8"
     LDFLAGS+=" -O2"
     LDFLAGS+=" -march=${CPU}"
+    LDFLAGS+=" -w"
 
 elif [ ${FLAVOR} == 'arm64' ] 
 then
@@ -78,9 +80,11 @@ then
 
     CFLAGS=" -fstack-protector"
     CFLAGS+=" -fstrict-aliasing"
+    CFLAGS+=" -w"
 
     LDFLAGS="-O2"
     LDFLAGS+=" -march=${CPU}"
+    LDFLAGS+=" -w"
 
     BUILDDIR=builddir/arm64-v8a
 
@@ -107,6 +111,7 @@ then
     CFLAGS+=" -fstack-protector-strong"
     CFLAGS+=" -O2"
     CFLAGS+=" -fpic"
+    CFLAGS+=" -w"
 
     BUILDDIR=builddir/x86
 
@@ -133,13 +138,14 @@ then
     CFLAGS+=" -fstack-protector-strong"
     CFLAGS+=" -O2"
     CFLAGS+=" -fpic"
+    CFLAGS+=" -w"
 
     BUILDDIR=builddir/x86_64
 else
     die "Unsupported architecture."
 fi
 
-CFLAGS+=" -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-function"
+CFLAGS+=" -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-function -w"
 
 export SYSROOT=$NDK/toolchains/llvm/prebuilt/$HOST_PLATFORM/sysroot
 
