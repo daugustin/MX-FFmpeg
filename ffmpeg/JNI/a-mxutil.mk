@@ -17,12 +17,12 @@ LOCAL_MODULE    := crypto
 LOCAL_SRC_FILES := libcrypto.a
 include $(PREBUILT_STATIC_LIBRARY)
 
-# # libsmb2
-# include $(CLEAR_VARS)
-# LOCAL_PATH  := $(MY_DIR)/libsmb2/lib/.libs
-# LOCAL_MODULE    := smb2
-# LOCAL_SRC_FILES := libsmb2.a
-# include $(PREBUILT_STATIC_LIBRARY)
+# libsmb2
+include $(CLEAR_VARS)
+LOCAL_PATH  := $(NDK_APP_DST_DIR)
+LOCAL_MODULE    := smb2
+LOCAL_SRC_FILES := libsmb2.a
+include $(PREBUILT_STATIC_LIBRARY)
 
 # libdav1d
 include $(CLEAR_VARS)
@@ -434,11 +434,11 @@ LOCAL_LDFLAGS := -Wl,--version-script=$(MY_DIR)/version_scripts/mxutil \
 include $(MY_DIR)/a-arch-$(TARGET_ARCH).mk
 LOCAL_ASFLAGS := $(LOCAL_CFLAGS)
 ifeq ($(TARGET_ARCH),arm)
-LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d
+LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2
 else ifeq ($(TARGET_ARCH),arm64)
-LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d
+LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2
 else
-LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d
+LOCAL_STATIC_LIBRARIES := opus speex modplug ssl crypto xml2 dav1d smb2
 endif
 include $(BUILD_SHARED_LIBRARY)
 
