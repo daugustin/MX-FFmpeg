@@ -80,8 +80,9 @@ do
     build_target ${item} $debug_flag 2>&1 1>> ${log_file} | tee -a ${log_file}
     if [[ -z ${SKIP_COPY} ]]
     then
-    copy_target ${item} smb2 2>&1 1>> ${log_file} | tee -a ${log_file}
-    copy_target ${item} mp3lame 2>&1 1>> ${log_file} | tee -a ${log_file}
+    # smb2 and mp3lame are now statically linked into mxutil
+    # copy_target ${item} smb2 2>&1 1>> ${log_file} | tee -a ${log_file}
+    # copy_target ${item} mp3lame 2>&1 1>> ${log_file} | tee -a ${log_file}
     copy_target ${item} mxutil 2>&1 1>> ${log_file} | tee -a ${log_file}
     copy_target ${item} c++_shared 2>&1 1>> ${log_file} | tee -a ${log_file}
     fi
